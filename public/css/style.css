@@ -1,0 +1,30 @@
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar{
+	margin: 0px;
+	padding: 0px;
+}
+
+.jumbotron{
+	margin-top: 0px;
+	background-color: #0e2426;
+	color: #ecf0f1;
+}
+
+.releases td,.releases th{
+  font-size: 14px;
+}
+
+.card-content{
+  padding: 10px 20px;
+}
+
+.action{
+  text-align: center;
+}
+
+p.genre{
+	color: gray;
+}
