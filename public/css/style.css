@@ -28,3 +28,7 @@ body{
 p.genre{
 	color: gray;
 }
+
+.login h2{
+  text-align: center;
+}

@@ -58,7 +58,7 @@ class Mangas extends Database
     $sql = "SELECT id,name,slug,genre,synopsis FROM manga WHERE genre = '$genre'";
 
     if($genre == null){
-      $sql = "SELECT id,name,slug,genre,synopsis FROM manga ORDER BY name ASC";
+      $sql = "SELECT id,name,slug,genre,synopsis FROM manga ORDER BY id ASC";
     }
 
     $query = $this->db->query($sql);

@@ -5,9 +5,10 @@
   <title>Login pages</title>
   <link rel="stylesheet" href="<?=base_url();?>public/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?=base_url();?>public/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="<?=base_url();?>public/css/style.css">
 </head>
 <body>
-  <div class="container">
+  <div class="container login">
     <div class="row">
       <div class="col-xs-6 col-xs-offset-3">
         <div class="row">

@@ -35,6 +35,17 @@ class Chapters extends Mangas
         $result = $query->fetch(PDO::FETCH_OBJ);
         return $result;
       }
+
+      public function isExists()
+      {
+        $sql = "SELECT * FROM chapter WHERE no = $this->no";
+        $query = $this->db->query($sql);
+        $result = $query->rowCount();
+        if($result == 0){
+          return false;
+        }
+        return true;
+      }
 }
 
 ?>

@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 function base_url()
 {
-	return "http://localhost/frame/";
+	return "http://localhost/realpi/";
 }
 
 

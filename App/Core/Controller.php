@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 namespace App\Core;
 
-class Controller 
+class Controller
 {
 	public $model = 'App\Models\\';
 

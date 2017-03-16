@@ -5,6 +5,7 @@
   <title><?= $data['title']; ?></title>
   <link rel="stylesheet" href="<?=base_url();?>public/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?=base_url();?>public/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="<?=base_url();?>public/css/style.css">
 </head>
 <body>
   <nav class="navbar navbar-default">

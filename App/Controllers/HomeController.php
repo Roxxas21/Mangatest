@@ -6,7 +6,7 @@ use App\Core\Controller;
 
 class HomeController extends Controller
 {
-	
+
 		public function __construct()
 		{
 			$this->load('Config');
@@ -50,13 +50,19 @@ class HomeController extends Controller
         // baca komik
         $chapter = $this->model('Chapters');
         $chapter->no = $chapterNo;
-        $chapter->getListImages();
-        $this->view('Manga/chapter/read',[
-          'manga'     => $mangaSlug,
-          'chapterNo' => $chapterNo,
-          'image'     => $chapter->images
-        ]);
-        return;
+
+				if(!$chapter->isExists()){
+					header('Location: '.base_url()."home/manga/$mangaSlug");
+					return;
+				}
+
+				$chapter->getListImages();
+				$this->view('Manga/chapter/read',[
+					'manga'     => $mangaSlug,
+					'chapterNo' => $chapterNo,
+					'image'     => $chapter->images
+				]);
+				return ;
       }
       // show manga info
       $manga = $this->model('Mangas');
