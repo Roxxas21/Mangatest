@@ -13,7 +13,7 @@
           <div class="form-group">
             <label for="name" class="col-sm-2 control-label">Nama</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="name" placeholder="Nama Manga" value="<?=$manga->name?>">
+              <input type="text" name="name" class="form-control" id="name" placeholder="Nama Manga" value="<?=$manga->name?>">
             </div>
           </div>
           <div class="form-group">
@@ -25,12 +25,12 @@
           <div class="form-group">
             <label for="synopsis" class="col-sm-2 control-label">Sysnopsis</label>
             <div class="col-sm-10">
-              <textarea name="synopsis" rows="8" cols="80" class="form-control"><?= $manga->synopsis; ?></textarea>
+              <textarea name="synopsis" rows="8" cols="80" class="form-control" name="synopsis"><?= $manga->synopsis; ?></textarea>
             </div>
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-warning btn-block">Edit Manga</button>
+              <button type="submit" class="btn btn-warning btn-block" name="editManga">Edit Manga</button>
             </div>
           </div>
         </form>

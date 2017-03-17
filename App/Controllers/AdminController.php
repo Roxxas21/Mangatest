@@ -82,6 +82,7 @@ class AdminController extends Controller
     // input manga
     $manga = $this->model('Mangas');
     $manga->name = $_POST['name'];
+    $manga->slug = str_replace(' ','-',$_POST['name']);
     $manga->genre = $_POST['genre'];
     $manga->synopsis = $_POST['synopsis'];
 
@@ -111,7 +112,18 @@ class AdminController extends Controller
         'title' => 'Edit Manga',
         'manga' => $manga
       ]);
+      return;
     }
+
+    $manga = $this->model('Mangas');
+    $manga->id = $id;
+    $manga->name = $_POST['name'];
+    $manga->sysnopsis = $_POST['synopsis'];
+    $manga->genre = $_POST['genre'];
+    $manga->update();
+
+    header('Location: '.base_url().'admin');
+    return ;
   }
 
 }

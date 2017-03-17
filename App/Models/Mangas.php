@@ -87,10 +87,16 @@ class Mangas extends Database
 
   public function input()
   {
-
     $sql = "INSERT INTO manga (name,slug,genre,synopsis,cover) VALUES
     ('$this->name','$this->slug','$this->genre','$this->synopsis',load_file('$this->cover'))";
     $this->db->exec($sql);
+    return ;
+  }
+
+  public function update()
+  {
+    $sql = "UPDATE manga SET name = '$this->name', genre = '$this->genre',synopsis = '$this->synopsis' where id = $this->id";
+    $query = $this->db->exec($sql);
     return ;
   }
 

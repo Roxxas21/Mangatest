@@ -44,7 +44,7 @@ class HomeController extends Controller
       header('Content-type: image/jpeg');
       echo $chapter->image;
     }
-    public function manga($mangaSlug,$chapterNo = null)
+    public function manga($mangaSlug=null,$chapterNo = null)
     {
       if($chapterNo !== null){
         // baca komik
