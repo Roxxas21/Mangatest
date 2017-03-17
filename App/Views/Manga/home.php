@@ -1,11 +1,17 @@
 <?php include 'header.php' ?>
-<div class="jumbotron">
- <div class="row">
-   <div class="col-xs-10 col-xs-offset-1">
-    <h1>MoeMoe Web Manga Project</h1>
+
+<div class="container-fluid">
+  <div class="row">
+      <div class="jumbotron">
+       <div class="row">
+         <div class="col-xs-10 col-xs-offset-1">
+          <h1>MoeMoe Web Manga Project</h1>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-</div>
+
 <div class="container">
   <div class="row">
     <main>
