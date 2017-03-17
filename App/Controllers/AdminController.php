@@ -1,7 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Core\Controller;
-
+use ZipArchive;
 
 class AdminController extends Controller
 {
@@ -109,7 +109,7 @@ class AdminController extends Controller
       $manga->find($id);
 
       $this->view('Admin/editManga',[
-        'title' => 'Edit Manga',
+        'title' => 'Edit Manga '.$manga->name,
         'manga' => $manga
       ]);
       return;
@@ -123,6 +123,91 @@ class AdminController extends Controller
     $manga->update();
 
     header('Location: '.base_url().'admin');
+    return ;
+  }
+
+  public function delete($id=null)
+  {
+    if($id !== null){
+        $manga = $this->model('Mangas');
+        $manga->id = $id;
+        $manga->delete();
+        header('Location: '.base_url().'admin');
+        return ;
+    }
+
+    header('Location: '.base_url().'admin');
+    return ;
+  }
+
+  public function manga($slug = null,$add = null)
+  {
+    if(!isset($_SESSION['user'])){
+      header('Location: '.base_url().'admin');
+      return ;
+    }
+
+      $manga = $this->model('Mangas');
+      $manga->set($slug);
+      $manga->reloadChapter();
+      $this->view('Admin/chapter_tool',[
+        'title'   => 'Edit manga chapter '.$manga->name,
+        'manga'   => $manga,
+        'chapter' => $manga->chapter
+      ]);
+      return ;
+  }
+
+  public function addChapter($slug)
+  {
+    if(!isset($_SESSION['user'])){
+      header('Location: '.base_url().'admin');
+    }
+
+    $manga = $this->model('Mangas');
+    $manga->set($slug);
+
+    if(!isset($_POST['addChapter'])){
+        $this->view('Admin/add_chapter',[
+          'title'   => 'Tambah chapter',
+          'manga'   => $manga
+        ]);
+        return ;
+    }
+
+    echo $manga->id;
+
+    $chapter = $this->model('Chapters');
+    $chapter->idManga = $manga->id;
+    $chapter->no = $_POST['noChapter'];
+    $chapter->judul = $_POST['judulChapter'];
+    $chapter->add();
+
+    // save zip to images table
+    // upload and extract zip
+    $target = __DIR__. '/../../public/assets/images/';
+    // upload file
+    copy($_FILES['fileChapter']['tmp_name'],$target.$_FILES['fileChapter']['name']);
+    // extract zip
+    $zip = new ZipArchive;
+    $zip->open($target.$_FILES['fileChapter']['name']);
+    $zip->extractTo($target);
+    unlink($target.$_FILES['fileChapter']['name']);
+    $dir = scandir($target);
+
+    $chapter->getId();
+
+    // add images to database
+    for ($i=2; $i < count($dir); $i++) {
+        $image = $this->model('Images');
+        $image->idChapter = $chapter->id;
+        $image->image = $target.$dir[$i];
+        $image->add();
+        // delete the images
+        unlink($target.$dir[$i]);
+    }
+
+    header('Location: '.base_url().'admin/manga/'.$manga->slug);
     return ;
   }
 

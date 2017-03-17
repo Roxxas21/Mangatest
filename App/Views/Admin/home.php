@@ -34,9 +34,9 @@
                     <tr>
                       <td><?= $manga->id; ?></td>
                       <td><?= $manga->name; ?></td>
-                      <td><a href="#" class="btn btn-xs btn-block btn-primary">Chapter</a></td>
-                      <td><a href="<?=base_url()?>admin/edit/<?=$manga->id?>" class="btn btn-xs btn-block btn-warning">Edit</a></td>
-                      <td><a href="#" class="btn btn-xs btn-block btn-danger">Hapus</a></td>
+                      <td><a href="<?=base_url()?>admin/manga/<?=$manga->slug;?>" class="btn btn-xs btn-block btn-primary">Chapter</a></td>
+                      <td><a href="<?=base_url()?>admin/edit/<?=$manga->id;?>" class="btn btn-xs btn-block btn-warning">Edit</a></td>
+                      <td><a href="<?=base_url()?>admin/delete/<?=$manga->id;?>" class="btn btn-xs btn-block btn-danger">Hapus</a></td>
                     </tr>
                   <?php endforeach; ?>
                 </tbody>

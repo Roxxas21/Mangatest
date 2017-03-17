@@ -4,11 +4,12 @@ namespace App\Core;
 
 class Controller
 {
-	public $model = 'App\Models\\';
+
+	public $model;
 
 	public function model($name)
 	{
-		$this->model .= $name;
+		$this->model = 'App\Models\\'. $name;
 		return new $this->model;
 	}
 

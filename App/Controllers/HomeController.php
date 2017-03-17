@@ -48,14 +48,18 @@ class HomeController extends Controller
     {
       if($chapterNo !== null){
         // baca komik
+				$manga = $this->model('Mangas');
+				$manga->set($mangaSlug);
         $chapter = $this->model('Chapters');
-        $chapter->no = $chapterNo;
+				$chapter->no = $chapterNo;
+				$chapter->idManga = $manga->id;
 
 				if(!$chapter->isExists()){
 					header('Location: '.base_url()."home/manga/$mangaSlug");
 					return;
 				}
-
+				
+				$chapter->getId();
 				$chapter->getListImages();
 				$this->view('Manga/chapter/read',[
 					'manga'     => $mangaSlug,

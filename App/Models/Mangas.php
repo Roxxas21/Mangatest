@@ -39,7 +39,6 @@ class Mangas extends Database
     $sql = "SELECT * FROM manga WHERE slug = '$slug'";
     $query = $this->db->query($sql);
     $result =$query->fetch(PDO::FETCH_OBJ);
-
     if(empty((array)$result)){
       return false;
     }
@@ -97,7 +96,15 @@ class Mangas extends Database
   {
     $sql = "UPDATE manga SET name = '$this->name', genre = '$this->genre',synopsis = '$this->synopsis' where id = $this->id";
     $query = $this->db->exec($sql);
-    return ;
+    return true;
+  }
+
+
+  public function delete()
+  {
+    $sql = "DELETE FROM manga WHERE id = $this->id";
+    $query = $this->db->exec($sql);
+    return true;
   }
 
 }
