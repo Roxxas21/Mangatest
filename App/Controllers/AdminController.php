@@ -76,8 +76,25 @@ class AdminController extends Controller
       $this->view('Admin/inputManga',[
         'title' => 'Input Manga'
       ]);
+      return ;
     }
 
+    // input manga
+    $manga = $this->model('Mangas');
+    $manga->name = $_POST['name'];
+    $manga->genre = $_POST['genre'];
+    $manga->synopsis = $_POST['synopsis'];
+
+    // upload file cover
+    $target = __DIR__ . "/../../public/assets/images/".$_FILES['cover']['name'];
+    copy($_FILES['cover']['tmp_name'],$target);
+
+    // upload berhasil;
+    $manga->cover = $target;
+
+    $manga->input();
+    header('Location: '.base_url().'admin');
+    return;
   }
 
   public function edit($id)

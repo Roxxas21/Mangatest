@@ -17,7 +17,9 @@
                       <img src="<?=base_url();?>home/cover/<?=$manga->id?>" class='img-responsive'>
                     </div>
                     <div class="col-xs-8">
-                      <h3><?= $manga->name; ?></h3>
+                      <a href="<?=base_url();?>home/manga/<?=$manga->slug;?>">
+                        <h3><?= $manga->name; ?></h3>
+                      </a>
                       <p class="genre"><?=$manga->genre?></p>
                       <p><?= $manga->synopsis; ?></p>
                       <p><a href="<?=base_url()?>home/manga/<?=$manga->slug?>" class='btn btn-info btn-block'>Baca Manga</a></p>
