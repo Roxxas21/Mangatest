@@ -23,7 +23,7 @@ class Chapters extends Database
 
       public function getReleases()
       {
-        $sql = "SELECT manga.id as idManga, manga.name, manga.slug, manga.genre , manga.synopsis, chapter.id as idChapter, chapter.no, chapter.judul, chapter.rilis from manga,chapter where manga.id = chapter.idManga ORDER BY chapter.rilis ASC";
+        $sql = "SELECT manga.id as idManga, manga.name, manga.slug, manga.genre , manga.synopsis, chapter.id as idChapter, chapter.no, chapter.judul, chapter.rilis from manga,chapter where manga.id = chapter.idManga ORDER BY chapter.rilis DESC";
         $query = $this->db->query($sql);
         $result =$query->fetchAll(PDO::FETCH_OBJ);
         return $result;
@@ -63,6 +63,26 @@ class Chapters extends Database
         $sql = "INSERT INTO chapter (idManga,no,judul) VALUES ($this->idManga,$this->no,'$this->judul')";
         $query = $this->db->exec($sql);
         return ;
+      }
+
+      public function getListId()
+      {
+        $sql = "SELECT id FROM chapter WHERE idManga = $this->idManga";
+        $query = $this->db->query($sql);
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        $this->id = $result;
+      }
+
+      public function deleteFromManga()
+      {
+        $sql = "DELETE FROM chapter WHERE idManga = $this->idManga";
+        $query = $this->db->exec($sql);
+        return ;
+      }
+
+      public function deleteFromChapter()
+      {
+
       }
 
 

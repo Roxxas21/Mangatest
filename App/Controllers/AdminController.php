@@ -131,6 +131,20 @@ class AdminController extends Controller
     if($id !== null){
         $manga = $this->model('Mangas');
         $manga->id = $id;
+
+
+        $chapter = $this->model('Chapters');
+        $chapter->idManga = $manga->id;
+        $chapter->getListId();
+
+        $images = $this->model('Images');
+
+        foreach ($chapter->id as $image) {
+          $images->idChapter = $image->id;
+          $images->delete();
+        }
+
+        $chapter->deleteFromManga();
         $manga->delete();
         header('Location: '.base_url().'admin');
         return ;

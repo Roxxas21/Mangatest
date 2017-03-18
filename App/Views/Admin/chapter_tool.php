@@ -26,7 +26,7 @@
           <a type="button" name="button" class="btn btn-info btn-block" href="<?=base_url()?>admin/addChapter/<?=$manga->slug;?>">Tambah Chapter</a>
         </div>
         <div class="col-sm-6">
-          <button type="button" name="button" class="btn btn-danger btn-block">Delete Manga</button>
+          <a type="button" name="button" class="btn btn-danger btn-block" href="<?=base_url();?>admin/delete/<?=$manga->id;?>">Delete Manga</a>
         </div>
       </div>
       <br>
