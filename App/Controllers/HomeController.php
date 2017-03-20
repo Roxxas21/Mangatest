@@ -58,7 +58,7 @@ class HomeController extends Controller
 					header('Location: '.base_url()."home/manga/$mangaSlug");
 					return;
 				}
-				
+
 				$chapter->getId();
 				$chapter->getListImages();
 				$this->view('Manga/chapter/read',[

@@ -21,7 +21,7 @@
                         <h3><?= $manga->name; ?></h3>
                       </a>
                       <p class="genre"><?=$manga->genre?></p>
-                      <p><?= $manga->synopsis; ?></p>
+                      <p><?= substr($manga->synopsis,0,200); ?>..</p>
                       <p><a href="<?=base_url()?>home/manga/<?=$manga->slug?>" class='btn btn-info btn-block'>Baca Manga</a></p>
                     </div>
                   </div>

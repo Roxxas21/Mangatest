@@ -49,7 +49,9 @@
                   <tr>
                     <td><?= $chapter->no ?></td>
                     <td><?= $chapter->judul?></td>
-                    <td class="action"><button type="button" name="button" class="btn btn-danger btn-xs btn-block">Hapus</button></td>
+                    <td class="action">
+                      <a type="button" name="button" class="btn btn-danger btn-xs btn-block" href="<?=base_url();?>admin/deletechapter/<?=$manga->slug;?>/<?=$chapter->id;?>">Hapus</a>
+                    </td>
                   </tr>
                 <?php endforeach; ?>
               </tbody>

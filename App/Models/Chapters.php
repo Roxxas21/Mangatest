@@ -21,14 +21,27 @@ class Chapters extends Database
         return ;
       }
 
-      public function getReleases()
+      public function searchChapter($key)
       {
-        $sql = "SELECT manga.id as idManga, manga.name, manga.slug, manga.genre , manga.synopsis, chapter.id as idChapter, chapter.no, chapter.judul, chapter.rilis from manga,chapter where manga.id = chapter.idManga ORDER BY chapter.rilis DESC";
+        $sql = "SELECT * FROM chapter WHERE no LIKE %$key%";
+        $query = $this->db->query($sql);
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+      }
+
+      public function getReleases($name = null,$no =null)
+      {
+        $sql = "SELECT manga.id as idManga, manga.name, manga.slug, manga.genre , manga.synopsis, chapter.id as idChapter, chapter.no, chapter.judul, chapter.rilis from manga,chapter where manga.id = chapter.idManga AND manga.name = $name AND chapter.no = $no ORDER BY chapter.rilis DESC";
+
+        if(!isset($name) || !isset($no)){
+          $sql = "SELECT manga.id as idManga, manga.name, manga.slug, manga.genre , manga.synopsis, chapter.id as idChapter, chapter.no, chapter.judul, chapter.rilis from manga,chapter where manga.id = chapter.idManga ORDER BY chapter.rilis DESC";
+        }
+
+
         $query = $this->db->query($sql);
         $result =$query->fetchAll(PDO::FETCH_OBJ);
         return $result;
       }
-
 
       public function getListImages()
       {
@@ -80,11 +93,12 @@ class Chapters extends Database
         return ;
       }
 
-      public function deleteFromChapter()
+      public function delete()
       {
-
+        $sql = "DELETE FROM chapter WHERE id = $this->id";
+        $query = $this->db->exec($sql);
+        return true;
       }
-
 
 }
 

@@ -189,8 +189,6 @@ class AdminController extends Controller
         return ;
     }
 
-    echo $manga->id;
-
     $chapter = $this->model('Chapters');
     $chapter->idManga = $manga->id;
     $chapter->no = $_POST['noChapter'];
@@ -223,6 +221,28 @@ class AdminController extends Controller
 
     header('Location: '.base_url().'admin/manga/'.$manga->slug);
     return ;
+  }
+
+  public function deleteChapter($manga=null,$id=null)
+  {
+    if(!isset($id)){
+      header('location: '.base_url().'admin/home');
+      return ;
+    }
+
+    $chapter = $this->model('Chapters');
+    $chapter->id = $id;
+
+    // delete images where chapter exists in there.
+    $image = $this->model('Images');
+    $image->idChapter = $chapter->id;
+    // delete from images table
+    $image->delete();
+
+    // delete from chapters table
+    $chapter->delete();
+
+    header('location: '.base_url().'admin/manga/'.$manga);
   }
 
 }
