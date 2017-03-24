@@ -11,6 +11,14 @@ p.gray{
 	padding: 0px;
 }
 
+.navbar-inverse{
+  border-radius: 0px;
+}
+
+.container-fluid .jumbotron{
+  border-radius: 0px;
+}
+
 .jumbotron{
 	margin-top: 0px;
 	background-color: #0e2426;
