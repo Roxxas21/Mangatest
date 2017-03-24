@@ -17,23 +17,24 @@
 					<li><a href="<?=base_url();?>">Home</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><p class="navbar-text"><?= $data['manga'] ?> - Chapter <?= $data['chapterNo']; ?></p></li>
+					<li><p class="navbar-text"><?= $data['manga'] ?> - Chapter <span id="noChapter"> <?= $data['chapterNo']; ?></span> </p></li>
 					<li><a href="<?=base_url()?>home/manga/<?=$data['manga']?>/<?=$data['chapterNo']+1;?>">Next</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
 	</nav>
 	<div class="container">
-		<div class="row">
+		<div class="row" id='chapterContent'>
 			<div class="col-xs-12 col-sm-8 col-sm-offset-2">
 				<?php foreach ($data['image'] as $image): ?>
 					<img src="<?=base_url()?>home/image/<?=$image->id?>" alt="image" class="img-responsive">
 				<?php endforeach; ?>
 			</div>
 		</div>
-	</div>
 </div>
-<script src="<?=base_url()?>js/jquery-3.1.1.min.js"></script>
-<script src="<?=base_url()?>js/bootstrap.min.js"></script>
+
+<script src="<?=base_url();?>public/js/jquery-3.1.1.min.js"></script>
+<script src="<?=base_url();?>public/js/bootstrap.min.js"></script>
+<script src="<?=base_url();?>public/js/style.js"></script>
 </body>
 </html>
