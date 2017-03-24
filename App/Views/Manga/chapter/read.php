@@ -17,7 +17,7 @@
 					<li><a href="<?=base_url();?>">Home</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><p class="navbar-text"><?= $data['manga'] ?> - Chapter <span id="noChapter"> <?= $data['chapterNo']; ?></span> </p></li>
+					<li><p class="navbar-text"><?= $data['manga'] ?> - Chapter <?= $data['chapterNo']; ?></p></li>
 					<li><a href="<?=base_url()?>home/manga/<?=$data['manga']?>/<?=$data['chapterNo']+1;?>">Next</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
