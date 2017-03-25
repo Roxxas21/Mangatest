@@ -25,11 +25,11 @@
           <!-- Default panel contents -->
           <div class="panel-heading">Daftar Chapter</div>
           <div class="panel-body">
-            <form>
-              <input type="text" name="cariChapter" placeholder="Cari Chapter" class="form-control">
+            <form method="get" action="">
+              <input type="text" name="cariChapter" placeholder="Nomer Chapter" class="form-control">
             </form>
           </div>
-
+          <?php if(count($data['chapter']) > 0){ ?>
           <table class="table table-striped table-condensed info">
             <thead>
               <tr>
@@ -48,6 +48,9 @@
               <?php endforeach; ?>
             </tbody>
           </table>
+          <?php }else{ ?>
+          <p class="panel-body">Maaf data yang anda cari tidak ditemukan</p>
+          <?php } ?>
         </div>
       </div>
     </div>

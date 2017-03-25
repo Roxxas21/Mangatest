@@ -4,8 +4,8 @@
   <div class="row">
       <div class="jumbotron">
        <div class="row">
-         <div class="col-xs-10 col-xs-offset-1">
-          <h1>MoeMoe Web Manga Project</h1>
+         <div class="col-xs-12">
+          <h1>RealPI Project</h1>
         </div>
       </div>
     </div>
@@ -21,13 +21,9 @@
 
           <div class="panel-body">
             <p>Daftar rilisan terbaru manga.</p>
-            <p>
-              <form class="" action="index.html" method="get">
-                <input type="text" name="cariRilis" placeholder="Cari Rilisan" class="form-control">
-              </form>
-            </p>
           </div>
 
+          <?php if(count($data['releases']) > 1){ ?>
           <!-- Table -->
           <table class="table table-hover table-condensed releases">
             <thead>
@@ -49,6 +45,9 @@
               <?php endforeach; ?>
             </tbody>
           </table>
+          <?php } else { ?>
+          <p class="panel-body">Maaf data yang anda cari tidak ditemukan</p>
+          <?php } ?>
         </div>
       </div>
     </main>

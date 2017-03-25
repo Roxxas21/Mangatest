@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title> Home </title>
+  <title> <?= $data['title']; ?> </title>
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="<?=base_url();?>public/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?=base_url();?>public/css/bootstrap-theme.min.css">

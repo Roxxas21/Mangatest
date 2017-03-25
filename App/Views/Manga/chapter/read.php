@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?= $data['manga']. '|' . $data['chapterNo'];?></title>
+	<title><?= $data['title']; ?></title>
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>public/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>public/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="<?=base_url()?>public/css/style.css">
 </head>
 <body>
-	<header></header>
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<!-- Collect the nav links, forms, and other content for toggling -->

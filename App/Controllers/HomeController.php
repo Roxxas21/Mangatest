@@ -16,9 +16,12 @@ class HomeController extends Controller
     {
       // halaman utama rilisan
       $chapter = $this->model('Chapters');
+
       $releases = $chapter->getReleases();
+
       $this->view('Manga/home',[
-        'releases' => $releases
+        'title'     => 'Home',
+        'releases'  => $releases
       ]);
     }
 
@@ -28,6 +31,7 @@ class HomeController extends Controller
         $manga = $this->model('Mangas');
         $data = $manga->getList($genre);
         $this->view('Manga/list',[
+          'title' => 'List '.$genre,
           'list' => $data
           ]);
         return ;
@@ -35,6 +39,7 @@ class HomeController extends Controller
       $manga = $this->model('Mangas');
       $data = $manga->getList();
       $this->view('Manga/list',[
+        'title' => 'Manga List',
         'list'  => $data
         ]);
     }
@@ -62,18 +67,29 @@ class HomeController extends Controller
 				$chapter->getId();
 				$chapter->getListImages();
 				$this->view('Manga/chapter/read',[
+          'title'     => $manga->name. ' - '.$chapter->no,
 					'manga'     => $mangaSlug,
 					'chapterNo' => $chapterNo,
 					'image'     => $chapter->images
 				]);
 				return ;
       }
+
+      
       // show manga info
       $manga = $this->model('Mangas');
       $manga->set($mangaSlug);
       $manga->reloadChapter();
+
+      if(isset($_GET['cariChapter'])){
+        $chapter = $this->model('Chapters');
+        $manga->chapter = $chapter->searchChapter($_GET['cariChapter']);
+      }
+
+
       $this->view('Manga/info',[
-        'manga' => $manga,
+        'title'   => $manga->name,
+        'manga'   => $manga,
         'chapter' => $manga->chapter
       ]);
 
