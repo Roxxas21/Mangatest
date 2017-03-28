@@ -21,9 +21,9 @@ class Chapters extends Database
         return ;
       }
 
-      public function searchChapter($key)
+      public function searchChapter($key,$idManga)
       {
-        $sql = "SELECT * FROM chapter WHERE no LIKE '%$key%'";
+        $sql = "SELECT * FROM chapter WHERE no LIKE '%$key%' AND idManga = $idManga";
         $query = $this->db->query($sql);
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;

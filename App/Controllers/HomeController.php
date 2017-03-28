@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controllers;
-
 use App\Core\Controller;
 
 class HomeController extends Controller
@@ -19,10 +17,17 @@ class HomeController extends Controller
 
       $releases = $chapter->getReleases();
 
+			$manga = $this->model('Mangas');
+			$topManga = $manga->getTopManga();
+
+			$recomendManga = $manga->getRecomendManga();
+
       $this->view('Manga/home',[
-        'title'     => 'Home',
-        'releases'  => $releases
-      ]);
+        'title'     		=> 'Home',
+        'releases'  		=> $releases,
+				'topManga'			=> $topManga,
+				'recomendManga'	=> $recomendManga
+			]);
     }
 
     public function list($genre = null)
@@ -43,12 +48,14 @@ class HomeController extends Controller
         'list'  => $data
         ]);
     }
-    public function image($id)
+
+		public function image($id)
     {
       $chapter = $this->model('Chapters')->getImage($id);
       header('Content-type: image/jpeg');
       echo $chapter->image;
     }
+
     public function manga($mangaSlug=null,$chapterNo = null)
     {
       if($chapterNo !== null){
@@ -75,7 +82,6 @@ class HomeController extends Controller
 				return ;
       }
 
-      
       // show manga info
       $manga = $this->model('Mangas');
       $manga->set($mangaSlug);
@@ -83,7 +89,7 @@ class HomeController extends Controller
 
       if(isset($_GET['cariChapter'])){
         $chapter = $this->model('Chapters');
-        $manga->chapter = $chapter->searchChapter($_GET['cariChapter']);
+        $manga->chapter = $chapter->searchChapter($_GET['cariChapter'],$manga->id);
       }
 
 
@@ -92,8 +98,8 @@ class HomeController extends Controller
         'manga'   => $manga,
         'chapter' => $manga->chapter
       ]);
+		}
 
-}
     public function cover($id)
     {
       $manga = $this->model('Mangas');

@@ -22,6 +22,12 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="rating" class="col-sm-2 control-label">Rating</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="rating" placeholder="Rating Manga" name="rating">
+            </div>
+          </div>
+          <div class="form-group">
             <label for="synopsis" class="col-sm-2 control-label">Cover</label>
             <div class="col-sm-10">
               <input type="file" name="cover">

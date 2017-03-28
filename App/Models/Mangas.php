@@ -31,6 +31,7 @@ class Mangas extends Database
     $this->name = $result->name;
     $this->slug = $result->slug;
     $this->genre = $result->genre;
+    $this->rating = $result->rating;
     $this->synopsis = $result->synopsis;
   }
 
@@ -47,9 +48,17 @@ class Mangas extends Database
     $this->name =$result->name;
     $this->slug =$result->slug;
     $this->genre =$result->genre;
+    $this->rating =$result->rating;
     $this->synopsis =$result->synopsis;
     $this->cover =$result->cover;
     return true;
+  }
+
+  public function search($key)
+  {
+    $sql = "SELECT * FROM manga WHERE name LIKE '%$key%'";
+    $query = $this->db->query($sql);
+    return $query->fetchAll(PDO::FETCH_OBJ);
   }
 
   public function getList($genre = null)
@@ -63,6 +72,20 @@ class Mangas extends Database
     $query = $this->db->query($sql);
     $result = $query->fetchAll(PDO::FETCH_OBJ);
     return $result;
+  }
+
+  public function getTopManga()
+  {
+    $sql = "SELECT * FROM manga ORDER BY rating DESC LIMIT 5";
+    $query = $this->db->query($sql);
+    return $query->fetchAll(PDO::FETCH_OBJ);
+  }
+
+  public function getRecomendManga()
+  {
+    $sql = "SELECT * FROM manga ORDER BY rand() DESC LIMIT 4";
+    $query = $this->db->query($sql);
+    return $query->fetchAll(PDO::FETCH_OBJ);
   }
 
   public function getCover($id)
@@ -86,15 +109,15 @@ class Mangas extends Database
 
   public function input()
   {
-    $sql = "INSERT INTO manga (name,slug,genre,synopsis,cover) VALUES
-    ('$this->name','$this->slug','$this->genre','$this->synopsis',load_file('$this->cover'))";
+    $sql = "INSERT INTO manga (name,slug,genre,rating,synopsis,cover) VALUES
+    ('$this->name','$this->slug','$this->genre',$this->rating,'$this->synopsis',load_file('$this->cover'))";
     $this->db->exec($sql);
     return ;
   }
 
   public function update()
   {
-    $sql = "UPDATE manga SET name = '$this->name', genre = '$this->genre',synopsis = '$this->synopsis' where id = $this->id";
+    $sql = "UPDATE manga SET name = '$this->name', genre = '$this->genre',rating = $this->rating,synopsis = '$this->synopsis' where id = $this->id";
     $query = $this->db->exec($sql);
     return true;
   }

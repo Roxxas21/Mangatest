@@ -13,12 +13,13 @@
           <div class="panel-body">
             <p>Cari Manga Disini : </p>
             <p>
-              <form class="" action="index.html" method="get">
+              <form class="" action="" method="get">
                 <input type="text" name="cariManga" placeholder="Cari Manga" class="form-control">
               </form>
             </p>
           </div>
           <!-- table -->
+          <?php if (count($data['manga']) > 0): ?>
           <div class="table-responsive">
             <table class="table table-hover table-striped table-bordered">
               <thead>
@@ -42,6 +43,9 @@
                 </tbody>
               </thead>
             </table>
+          <?php else: ?>
+            <p class="panel-body">Maaf data yang anda cari tidak ditemukan</p>
+          <?php endif; ?>
           </div>
         </div>
       </div>

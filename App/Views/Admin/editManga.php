@@ -23,6 +23,12 @@
             </div>
           </div>
           <div class="form-group">
+            <label for="genre" class="col-sm-2 control-label">Rating</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="genre" placeholder="Genre Manga" name="rating" value="<?=$manga->rating?>">
+            </div>
+          </div>
+          <div class="form-group">
             <label for="synopsis" class="col-sm-2 control-label">Sysnopsis</label>
             <div class="col-sm-10">
               <textarea name="synopsis" rows="8" cols="80" class="form-control" name="synopsis"><?= $manga->synopsis; ?></textarea>

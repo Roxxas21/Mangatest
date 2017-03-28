@@ -51,7 +51,37 @@
         </div>
       </div>
     </main>
+    <aside class="col-xs-12 col-sm-4">
+      <div class="list-group">
+        <?php foreach ($data['topManga'] as $topManga): ?>
+          <a type="button" name="button" class='list-group-item' href="<?= base_url(); ?>home/manga/<?=$topManga->slug?>"><?= $topManga->name; ?></a>
+        <?php endforeach; ?>
+      </div>
+    </aside>
 
   </div> <!-- /row -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="page-header">
+        <h2>Recomended Manga</h2>
+      </div>
+      <?php foreach ($data['recomendManga'] as $recomendManga) : ?>
+      <div class="col-xs-3">
+        <div class="thumbnail">
+          <a href="<?=base_url();?>home/manga/<?=$recomendManga->slug?>">
+            <img src="<?=base_url();?>home/cover/<?=$recomendManga->id;?>" alt="cover" class='img-responsive'>
+          </a>
+          <div class="caption">
+            <a href="<?=base_url();?>home/manga/<?=$recomendManga->slug;?>">
+              <h4><?=$recomendManga->name?></h4>
+            </a>
+            <p>Rating : <?= $recomendManga->rating; ?></p>
+            <p>Genre : <?= $recomendManga->genre; ?></p>
+          </div>
+        </div>
+      </div>
+    <?php endforeach; ?>
+    </div>
+  </div>
 </div>
 <?php include 'footer.php'; ?>

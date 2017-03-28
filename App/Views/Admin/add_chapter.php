@@ -31,7 +31,7 @@
           <div class="form-group">
             <label for="fileChapter" class="col-sm-2 control-label">File Zip</label>
             <div class="col-sm-10">
-              <input type="file" id="fileChapter" name="fileChapter">
+              <input type="file" id="fileChapter" name="fileChapter" accept="application/x-zip-compressed">
             </div>
           </div>
           <div class="form-group">

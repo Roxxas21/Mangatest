@@ -36,26 +36,30 @@
           <div class="panel-heading">Daftar Chapter</div>
           <div class="panel-body">
             <p><input type="text" name="cariChapter" value="" class="form-control" placeholder="Cari Manga"></p>
-            <table class="table table-bordered table-hover">
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Judul</th>
-                  <th class="action">Hapus</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php foreach ($data['chapter'] as $chapter): ?>
+            <?php if (count($data['chapter']) > 0): ?>
+              <table class="table table-bordered table-hover">
+                <thead>
                   <tr>
-                    <td><?= $chapter->no ?></td>
-                    <td><?= $chapter->judul?></td>
-                    <td class="action">
-                      <a type="button" name="button" class="btn btn-danger btn-xs btn-block" href="<?=base_url();?>admin/deletechapter/<?=$manga->slug;?>/<?=$chapter->id;?>">Hapus</a>
-                    </td>
+                    <th>No</th>
+                    <th>Judul</th>
+                    <th class="action">Hapus</th>
                   </tr>
-                <?php endforeach; ?>
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  <?php foreach ($data['chapter'] as $chapter): ?>
+                    <tr>
+                      <td><?= $chapter->no ?></td>
+                      <td><?= $chapter->judul?></td>
+                      <td class="action">
+                        <a type="button" name="button" class="btn btn-danger btn-xs btn-block" href="<?=base_url();?>admin/deletechapter/<?=$manga->slug;?>/<?=$chapter->id;?>">Hapus</a>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
+                </tbody>
+              </table>
+            <?php else: ?>
+              <p class="panel-body">Maaf data yang anda cari tidak ditemukan</p>
+            <?php endif; ?>
           </div>
         </div>
       </div>

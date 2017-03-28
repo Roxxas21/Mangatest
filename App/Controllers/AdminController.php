@@ -20,7 +20,7 @@ class AdminController extends Controller
     }
 
     header('Location: '.base_url().'admin/home');
-
+    return ;
   }
 
   public function login()
@@ -58,12 +58,21 @@ class AdminController extends Controller
       header('Location: '.base_url().'admin');
       return ;
     }
+
     $manga = $this->model('Mangas');
     $data = $manga->getList();
+
+    if(isset($_GET['cariManga'])){
+      $manga = $this->model('Mangas');
+      $data = $manga->search($_GET['cariManga']);
+    }
+
     $this->view('Admin/home',[
       'title' => 'Admin Panel',
       'manga' => $data
     ]);
+
+    return ;
   }
   public function input()
   {
@@ -84,6 +93,7 @@ class AdminController extends Controller
     $manga->name = $_POST['name'];
     $manga->slug = str_replace(' ','-',$_POST['name']);
     $manga->genre = $_POST['genre'];
+    $manga->rating = $_POST['rating'];
     $manga->synopsis = $_POST['synopsis'];
 
     // upload file cover
@@ -118,8 +128,9 @@ class AdminController extends Controller
     $manga = $this->model('Mangas');
     $manga->id = $id;
     $manga->name = $_POST['name'];
-    $manga->sysnopsis = $_POST['synopsis'];
+    $manga->synopsis = $_POST['synopsis'];
     $manga->genre = $_POST['genre'];
+    $manga->rating = $_POST['rating'];
     $manga->update();
 
     header('Location: '.base_url().'admin');
@@ -182,6 +193,7 @@ class AdminController extends Controller
     $manga->set($slug);
 
     if(!isset($_POST['addChapter'])){
+      $manga->set($slug);
         $this->view('Admin/add_chapter',[
           'title'   => 'Tambah chapter',
           'manga'   => $manga
