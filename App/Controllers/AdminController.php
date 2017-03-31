@@ -104,6 +104,7 @@ class AdminController extends Controller
     $manga->cover = $target;
 
     $manga->input();
+    unlink($target);
     header('Location: '.base_url().'admin');
     return;
   }
