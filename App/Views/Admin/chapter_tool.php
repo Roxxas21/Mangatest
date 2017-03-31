@@ -1,6 +1,7 @@
 <?php include "header.php"; ?>
 <?php $manga = $data['manga']; ?>
 <?php $chapter = $data['chapter']; ?>
+
 <div class="container">
   <br>
   <div class="row">
@@ -35,7 +36,11 @@
           <!-- Default panel contents -->
           <div class="panel-heading">Daftar Chapter</div>
           <div class="panel-body">
-            <p><input type="text" name="cariChapter" value="" class="form-control" placeholder="Cari Manga"></p>
+            <p>
+              <form class="" action="" method="get">
+                <input type="text" name="cariChapter" class="form-control" placeholder="Cari No.Chapter">
+              </form>
+            </p>
             <?php if (count($data['chapter']) > 0): ?>
               <table class="table table-bordered table-hover">
                 <thead>

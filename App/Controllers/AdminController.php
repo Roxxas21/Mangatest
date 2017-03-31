@@ -140,25 +140,25 @@ class AdminController extends Controller
   public function delete($id=null)
   {
     if($id !== null){
-        $manga = $this->model('Mangas');
-        $manga->id = $id;
+      $manga = $this->model('Mangas');
+      $manga->id = $id;
 
 
-        $chapter = $this->model('Chapters');
-        $chapter->idManga = $manga->id;
-        $chapter->getListId();
+      $chapter = $this->model('Chapters');
+      $chapter->idManga = $manga->id;
+      $chapter->getListId();
 
-        $images = $this->model('Images');
+      $images = $this->model('Images');
 
-        foreach ($chapter->id as $image) {
-          $images->idChapter = $image->id;
-          $images->delete();
-        }
+      foreach ($chapter->id as $image) {
+        $images->idChapter = $image->id;
+        $images->delete();
+      }
 
-        $chapter->deleteFromManga();
-        $manga->delete();
-        header('Location: '.base_url().'admin');
-        return ;
+      $chapter->deleteFromManga();
+      $manga->delete();
+      header('Location: '.base_url().'admin');
+      return ;
     }
 
     header('Location: '.base_url().'admin');
@@ -172,15 +172,22 @@ class AdminController extends Controller
       return ;
     }
 
-      $manga = $this->model('Mangas');
-      $manga->set($slug);
-      $manga->reloadChapter();
-      $this->view('Admin/chapter_tool',[
-        'title'   => 'Edit manga chapter '.$manga->name,
-        'manga'   => $manga,
-        'chapter' => $manga->chapter
-      ]);
-      return ;
+    $manga = $this->model('Mangas');
+    $manga->set($slug);
+    $manga->reloadChapter();
+
+    if(isset($_GET['cariChapter'])){
+      $chapter = $this->model('Chapters');
+      $chapter->idManga = $manga->id;
+      $manga->chapter = $chapter->searchChapter($_GET['cariChapter']);
+    }
+
+    $this->view('Admin/chapter_tool',[
+      'title'   => 'Edit manga chapter '.$manga->name,
+      'manga'   => $manga,
+      'chapter' => $manga->chapter
+    ]);
+    return ;
   }
 
   public function addChapter($slug)
@@ -194,11 +201,11 @@ class AdminController extends Controller
 
     if(!isset($_POST['addChapter'])){
       $manga->set($slug);
-        $this->view('Admin/add_chapter',[
-          'title'   => 'Tambah chapter',
-          'manga'   => $manga
-        ]);
-        return ;
+      $this->view('Admin/add_chapter',[
+        'title'   => 'Tambah chapter',
+        'manga'   => $manga
+      ]);
+      return ;
     }
 
     $chapter = $this->model('Chapters');
@@ -223,12 +230,12 @@ class AdminController extends Controller
 
     // add images to database
     for ($i=2; $i < count($dir); $i++) {
-        $image = $this->model('Images');
-        $image->idChapter = $chapter->id;
-        $image->image = $target.$dir[$i];
-        $image->add();
-        // delete the images
-        unlink($target.$dir[$i]);
+      $image = $this->model('Images');
+      $image->idChapter = $chapter->id;
+      $image->image = $target.$dir[$i];
+      $image->add();
+      // delete the images
+      unlink($target.$dir[$i]);
     }
 
     header('Location: '.base_url().'admin/manga/'.$manga->slug);

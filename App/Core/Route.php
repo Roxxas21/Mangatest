@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Core;
 
@@ -45,11 +45,12 @@ class Route
 
 		if(!method_exists($this->controller, $this->method)){
 			require_once __DIR__ . "/../Views/Error/404.php";
-			return ;	
+			return ;
 		}
-		
+
 		call_user_func_array([$this->controller,$this->method], $this->params);
 	}
+	
 }
 
 ?>

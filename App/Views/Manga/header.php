@@ -40,6 +40,11 @@
         </ul>
       </li>
     </ul>
+    <form class="navbar-form navbar-right" method="get" action="<?=base_url();?>home/list">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Cari Manga" name="cariManga" value="<?if(isset($_GET['cariManga'])) echo $_GET['cariManga']?>">
+      </div>
+    </form>
   </div><!-- /.navbar-collapse -->
 </div><!-- /.container -->
 </nav>

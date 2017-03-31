@@ -3,20 +3,19 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <div class="row">
         <div class="page-header">
           <h2>List manga</h2>
         </div>
-      </div>
       <div class="row">
+      <?php if(count($data['list']) > 0): ?>
         <?php foreach ($data['list'] as $manga): ?>
-              <div class="col-xs-6">
+              <div class="col-xs-12 col-sm-6">
                 <div class="thumbnail">
                   <div class="row">
-                    <div class="col-xs-4">
+                    <div class="col-xs-6">
                       <img src="<?=base_url();?>home/cover/<?=$manga->id?>" class='img-responsive'>
                     </div>
-                    <div class="col-xs-8">
+                    <div class="col-xs-6">
                       <a href="<?=base_url();?>home/manga/<?=$manga->slug;?>">
                         <h3><?= $manga->name; ?></h3>
                       </a>
@@ -27,7 +26,12 @@
                   </div>
                 </div>
               </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+          <?php else: ?>
+            <div class="col-xs-4 col-xs-offset-4">
+              <p>Maaf data yang anda cari tidak ditemukan</p>
+            </div>
+          <?php endif; ?>
       </div>
     </div>
   </div>

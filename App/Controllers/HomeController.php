@@ -41,8 +41,14 @@ class HomeController extends Controller
           ]);
         return ;
       }
-      $manga = $this->model('Mangas');
+
+			$manga = $this->model('Mangas');
       $data = $manga->getList();
+
+			if(isset($_GET['cariManga'])){
+				$data = $manga->search($_GET['cariManga']);
+			}
+
       $this->view('Manga/list',[
         'title' => 'Manga List',
         'list'  => $data
@@ -89,6 +95,7 @@ class HomeController extends Controller
 
       if(isset($_GET['cariChapter'])){
         $chapter = $this->model('Chapters');
+				$chapter->idManga = $manga->id;
         $manga->chapter = $chapter->searchChapter($_GET['cariChapter'],$manga->id);
       }
 

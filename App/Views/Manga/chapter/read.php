@@ -10,9 +10,9 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a href="<?=base_url();?>home/manga/<?=$data['manga']?>/<?=$data['chapterNo']-1?>">Previous <span class="sr-only">(current)</span></a></li>
+					<li class=""><a href="<?=base_url();?>home/manga/<?=$data['manga']?>/<?=$data['chapterNo']-1?>">Previous <span class="sr-only">(current)</span></a></li>
 					<li><a href="<?=base_url();?>">Home</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
