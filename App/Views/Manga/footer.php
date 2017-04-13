@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <hr>
-      <p>&copy 2017 MoeMoe Manga Stream</p>
+      <p>&copy 2017 RealPI Manga Stream</p>
       <p class="gray">Please support the authors by purchasing the volumes from official avenues when they are available in your locale.</p>
     </div>
   </div>

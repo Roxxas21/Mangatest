@@ -31,7 +31,7 @@ class Chapters extends Database
 
       public function getReleases()
       {
-        $sql = "SELECT manga.id as idManga, manga.name, manga.slug, manga.genre , manga.synopsis, chapter.id as idChapter, chapter.no, chapter.judul, chapter.rilis from manga,chapter where manga.id = chapter.idManga ORDER BY chapter.rilis DESC";
+        $sql = "SELECT manga.id as idManga, manga.name, manga.slug, manga.genre , manga.synopsis, chapter.id as idChapter, chapter.no, chapter.judul, chapter.rilis from manga,chapter where manga.id = chapter.idManga ORDER BY chapter.rilis DESC LIMIT 10";
 
         $query = $this->db->query($sql);
         $result =$query->fetchAll(PDO::FETCH_OBJ);

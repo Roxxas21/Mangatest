@@ -68,8 +68,8 @@ class AdminController extends Controller
     }
 
     $this->view('Admin/home',[
-      'title' => 'Admin Panel',
-      'manga' => $data
+      'manga' => $data,
+      'title' => 'Admin Panel'
     ]);
 
     return ;
@@ -238,8 +238,8 @@ class AdminController extends Controller
       // delete the images
       unlink($target.$dir[$i]);
     }
-
     header('Location: '.base_url().'admin/manga/'.$manga->slug);
+
     return ;
   }
 
@@ -264,7 +264,6 @@ class AdminController extends Controller
 
     header('location: '.base_url().'admin/manga/'.$manga);
   }
-
 }
 
 ?>

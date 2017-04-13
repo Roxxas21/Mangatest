@@ -24,16 +24,17 @@
             <table class="table table-hover table-striped table-bordered">
               <thead>
                 <tr>
-                  <th>Id</th>
+                  <th>No</th>
                   <th>Judul Manga</th>
                   <th>Tools</th>
                   <th>Edit</th>
                   <th>Hapus</th>
                 </tr>
                 <tbody>
+                  <?php $i = 0; ?>
                   <?php foreach ($data["manga"] as $manga): ?>
                     <tr>
-                      <td><?= $manga->id; ?></td>
+                      <td><?= ++$i; ?></td>
                       <td><?= $manga->name; ?></td>
                       <td><a href="<?=base_url()?>admin/manga/<?=$manga->slug;?>" class="btn btn-xs btn-block btn-primary">Chapter</a></td>
                       <td><a href="<?=base_url()?>admin/edit/<?=$manga->id;?>" class="btn btn-xs btn-block btn-warning">Edit</a></td>

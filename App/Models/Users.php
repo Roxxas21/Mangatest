@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 use App\Core\Database;
 
@@ -14,13 +13,6 @@ class Users extends Database
       $query = $this->db->query($sql);
       $result = $query->fetchAll(PDO::FETCH_OBJ);
       return $result;
-    }
-
-    public function test()
-    {
-        $query = $this->db->query('SELECT * FROM users');
-      $result = $query->fetch(PDO::FETCH_OBJ);
-        return $result;
     }
 
     public function isLogin()
