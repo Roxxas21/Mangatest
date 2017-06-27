@@ -6,6 +6,10 @@ p.gray{
   color: gray;
 }
 
+p.synopsis{
+  text-align: justify;
+}
+
 .navbar{
 	margin: 0px;
 	padding: 0px;
@@ -53,5 +57,5 @@ p.genre{
 /* testing */
 img{
   height: 150px;
-  
+
 }

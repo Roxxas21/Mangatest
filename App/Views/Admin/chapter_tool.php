@@ -16,7 +16,7 @@
               <div class="col-sm-9">
                 <h2><?= $manga->name ?></h2>
                 <p class="genre"><?= $manga->genre ?></p>
-                <p><?= $manga->synopsis; ?></p>
+                <p class="synopsis"><?= $manga->synopsis; ?></p>
               </div>
             </div>
           </div>

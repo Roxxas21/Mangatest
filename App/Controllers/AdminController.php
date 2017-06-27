@@ -184,7 +184,7 @@ class AdminController extends Controller
     }
 
     $this->view('Admin/chapter_tool',[
-      'title'   => 'Edit manga chapter '.$manga->name,
+      'title'   => 'Manajemen chapter manga'.$manga->name,
       'manga'   => $manga,
       'chapter' => $manga->chapter
     ]);

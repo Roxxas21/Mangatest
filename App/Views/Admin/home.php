@@ -1,7 +1,7 @@
 <?php include "header.php"; ?>
 <div class="container">
   <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
+    <div class="col-sm-8 col-sm-offset-2">
       <div class="row">
         <div class="page-header">
           <h2>Admin Panel</h2>

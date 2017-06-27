@@ -1,7 +1,5 @@
-<?php 
-
+<?php
 namespace App\Core;
-
 use \PDO;
 
 class Database
@@ -10,7 +8,7 @@ class Database
 	private $host 	= 'localhost';
 	private $dbname = 'realpidb';
 	private $user	= 'root';
-	private $pass	= '';
+	private $pass	= 'root';
 
 	public function __construct()
 	{

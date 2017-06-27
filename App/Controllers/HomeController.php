@@ -81,7 +81,8 @@ class HomeController extends Controller
 				$chapter->getListImages();
 				$this->view('Manga/chapter/read',[
           'title'     => $manga->name. ' - '.$chapter->no,
-					'manga'     => $mangaSlug,
+					'manga'     => $manga->name,
+          'slug'      => $manga->slug,
 					'chapterNo' => $chapterNo,
 					'image'     => $chapter->images
 				]);

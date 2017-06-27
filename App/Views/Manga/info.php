@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="col-md-8">
-        <p><?= $manga->synopsis; ?></p>
+        <p class="synopsis"><?= $manga->synopsis; ?></p>
         <hr>
         <div class="panel panel-default">
           <!-- Default panel contents -->

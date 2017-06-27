@@ -12,12 +12,12 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class=""><a href="<?=base_url();?>home/manga/<?=$data['manga']?>/<?=$data['chapterNo']-1?>">Previous <span class="sr-only">(current)</span></a></li>
+					<li class=""><a href="<?=base_url();?>home/manga/<?=$data['slug']?>/<?=$data['chapterNo']-1?>">Previous <span class="sr-only">(current)</span></a></li>
 					<li><a href="<?=base_url();?>">Home</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><p class="navbar-text"><?= $data['manga'] ?> - Chapter <?= $data['chapterNo']; ?></p></li>
-					<li><a href="<?=base_url()?>home/manga/<?=$data['manga']?>/<?=$data['chapterNo']+1;?>">Next</a></li>
+					<li><a href="<?=base_url()?>home/manga/<?=$data['slug']?>/<?=$data['chapterNo']+1;?>">Next</a></li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div><!-- /.container-fluid -->
