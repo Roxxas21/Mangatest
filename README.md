@@ -1,2 +1,2 @@
 # realpi
-implement MVC pattern to build manga website
+Build manga website with Mikasa framework
