@@ -8,19 +8,29 @@
 </head>
 <body>
 	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li class=""><a href="<?=base_url();?>home/manga/<?=$data['slug']?>/<?=$data['chapterNo']-1?>">Previous <span class="sr-only">(current)</span></a></li>
-					<li><a href="<?=base_url();?>">Home</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li><p class="navbar-text"><?= $data['manga'] ?> - Chapter <?= $data['chapterNo']; ?></p></li>
-					<li><a href="<?=base_url()?>home/manga/<?=$data['slug']?>/<?=$data['chapterNo']+1;?>">Next</a></li>
-				</ul>
-			</div><!-- /.navbar-collapse -->
-		</div><!-- /.container-fluid -->
+	  <div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="#">RealPI</a>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	        <li><a href="<?=base_url();?>home/manga/<?=$data['slug']?>/<?=$data['chapterNo']-1?>">Previous</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><p class="navbar-text"><?= $data['manga'] ?> - Chapter <?= $data['chapterNo']; ?></p></li>
+	        <li><a href="<?=base_url()?>home/manga/<?=$data['slug']?>/<?=$data['chapterNo']+1;?>">Next</a></li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
 	</nav>
 	<div class="container">
 		<div class="row" id='chapterContent'>
